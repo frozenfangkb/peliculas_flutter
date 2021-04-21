@@ -12,6 +12,17 @@ class PeliculasProvider {
     final url = Uri.https(_url, "3/movie/now_playing",
         {'api_key': _apiKey, 'language': _language});
 
+    return await _getPeliculasResponse(url);
+  }
+
+  Future<List<Pelicula>> getPopulares() async {
+    final url = Uri.https(
+        _url, "3/movie/popular", {'api_key': _apiKey, 'language': _language});
+
+    return await _getPeliculasResponse(url);
+  }
+
+  Future<List<Pelicula>> _getPeliculasResponse(Uri url) async {
     final response = await http.get(url);
 
     print(response);
