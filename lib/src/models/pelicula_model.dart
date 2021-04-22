@@ -69,4 +69,11 @@ class Pelicula {
     }
     return "https://image.tmdb.org/t/p/w500/$posterPath";
   }
+
+  getBackgroundImg() {
+    if (posterPath == null) {
+      return "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+    }
+    return "https://image.tmdb.org/t/p/w500/$backdropPath";
+  }
 }

@@ -34,7 +34,7 @@ class MovieHorizontal extends StatelessWidget {
   }
 
   Widget _tarjeta(BuildContext context, Pelicula pelicula, Size _screenSize) {
-    return Container(
+    final tarjeta = Container(
       margin: EdgeInsets.only(right: 15),
       child: Column(
         children: [
@@ -57,6 +57,13 @@ class MovieHorizontal extends StatelessWidget {
           )
         ],
       ),
+    );
+
+    return GestureDetector(
+      child: tarjeta,
+      onTap: () {
+        Navigator.pushNamed(context, 'detalle', arguments: pelicula);
+      },
     );
   }
 }
