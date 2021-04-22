@@ -22,40 +22,41 @@ class MovieHorizontal extends StatelessWidget {
 
     return Container(
       height: _screenSize.height * 0.2,
-      child: PageView(
+      child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
-        children: _tarjetas(_screenSize, context),
+        itemBuilder: (BuildContext context, int i) {
+          return _tarjeta(context, peliculas[i], _screenSize);
+        },
+        itemCount: peliculas.length,
       ),
     );
   }
 
-  List<Widget> _tarjetas(Size _screenSize, BuildContext context) {
-    return peliculas.map((pelicula) {
-      return Container(
-        margin: EdgeInsets.only(right: 15),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/img/no-image.jpg'),
-                image: NetworkImage(pelicula.getPosterImg()),
-                fit: BoxFit.cover,
-                height: _screenSize.height * 0.15,
-              ),
+  Widget _tarjeta(BuildContext context, Pelicula pelicula, Size _screenSize) {
+    return Container(
+      margin: EdgeInsets.only(right: 15),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: FadeInImage(
+              placeholder: AssetImage('assets/img/no-image.jpg'),
+              image: NetworkImage(pelicula.getPosterImg()),
+              fit: BoxFit.cover,
+              height: _screenSize.height * 0.15,
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              pelicula.title,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.caption,
-            )
-          ],
-        ),
-      );
-    }).toList();
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            pelicula.title,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.caption,
+          )
+        ],
+      ),
+    );
   }
 }
