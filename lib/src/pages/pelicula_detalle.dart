@@ -19,7 +19,6 @@ class PeliculaDetalle extends StatelessWidget {
             ),
             _posterTitulo(pelicula, context),
             _descripcion(pelicula),
-            SizedBox(height: 10),
             Center(
               child: Text(
                 "Actores",
@@ -62,11 +61,14 @@ class PeliculaDetalle extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image(
-              image: NetworkImage(pelicula.getPosterImg()),
-              height: 150,
+          Hero(
+            tag: pelicula.uniqueId,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image(
+                image: NetworkImage(pelicula.getPosterImg()),
+                height: 150,
+              ),
             ),
           ),
           SizedBox(

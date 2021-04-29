@@ -52,12 +52,14 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.only(left: 20),
-              child: Text(
-                'Populares',
-                style: Theme.of(context).textTheme.subtitle1,
+              child: Center(
+                child: Text(
+                  'Populares',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
               ),
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 20),
             StreamBuilder(
               stream: peliculasProvider.popularesStream,
               builder: (BuildContext context, AsyncSnapshot snapshot) {

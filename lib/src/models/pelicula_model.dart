@@ -28,6 +28,7 @@ class Pelicula {
   bool adult;
   String overview;
   String releaseDate;
+  String uniqueId;
 
   Pelicula({
     this.voteCount,
